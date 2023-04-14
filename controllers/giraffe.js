@@ -31,3 +31,16 @@ exports.giraffe_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+
+    // VIEWS
+    // Handle a show all view
+exports.giraffe_view_all_Page = async function(req, res) {
+    try{
+        theGiraffe = await giraffe.find();
+    res.render('giraffe', { title: 'Giraffe Search Results', results: theGiraffe });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
