@@ -44,3 +44,24 @@ exports.giraffe_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+
+    // Handle Giraffe create on POST.
+exports.giraffe_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new giraffe();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+
+    document.giraffe_name = req.body.giraffe_name;
+    document.giraffe_color = req.body.giraffe_color;
+    document.giraffe_weight = req.body.giraffe_weight;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
