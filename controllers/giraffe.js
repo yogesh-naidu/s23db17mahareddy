@@ -24,9 +24,26 @@ res.send('NOT IMPLEMENTED: giraffe create POST');
 exports.giraffe_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: giraffe delete DELETE ' + req.params.id);
 };
-// Handle giraffe update form on PUT.
-exports.giraffe_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: giraffe update PUT' + req.params.id);
+
+// Handle Giraffe update form on PUT.
+exports.giraffe_update_put = async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+try {
+let toUpdate = await giraffe.findById( req.params.id)
+// Do updates of properties
+if(req.body.giraffe_name)
+toUpdate.giraffe_name = req.body.giraffe_name;
+if(req.body.giraffe_color) toUpdate.giraffe_color = req.body.giraffe_color;
+if(req.body.giraffe_weight) toUpdate.giraffe_weight = req.body.giraffe_weight;
+let result = await toUpdate.save();
+console.log("Sucess " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+}
 };
 
 // List of all giraffe
