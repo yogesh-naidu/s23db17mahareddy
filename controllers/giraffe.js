@@ -19,3 +19,15 @@ res.send('NOT IMPLEMENTED: giraffe delete DELETE ' + req.params.id);
 exports.giraffe_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: giraffe update PUT' + req.params.id);
 };
+
+// List of all giraffe
+exports.giraffe_list = async function(req, res) {
+    try{
+    theGiraffe = await giraffe.find();
+    res.send(theGiraffe);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
