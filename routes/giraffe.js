@@ -10,4 +10,6 @@ router.get('/detail', giraffe_controlers.giraffe_view_one_Page);
 router.get('/create', giraffe_controlers.giraffe_create_Page);
 /* GET create update page */
 router.get('/update', giraffe_controlers.giraffe_update_Page);
+/* GET delete giraffe page */
+router.get('/delete', giraffe_controlers.giraffe_delete_Page);
 module.exports = router;

@@ -128,3 +128,31 @@ exports.giraffe_create_Page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+   // Handle building the view for updating a giraffe.
+// query provides the id
+exports.giraffe_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await giraffe.findById(req.query.id)
+    res.render('giraffeupdate', { title: 'Giraffe Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
+
+   // Handle a delete one view with id from query
+exports.giraffe_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await giraffe.findById(req.query.id)
+    res.render('giraffedelete', { title: 'Giraffe Delete', toShow:
+   result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

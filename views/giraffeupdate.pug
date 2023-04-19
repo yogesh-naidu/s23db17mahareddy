@@ -1,0 +1,46 @@
+extends layout 
+
+block content 
+    h1= title 
+
+
+    - let giraffeid = toShow._id 
+    - let giraffe_name = toShow.giraffe_name 
+    - let giraffe_color  = toShow.giraffe_color 
+    - let giraffe_weight = toShow.giraffe_weight 
+
+
+    div.row(class='mb-2') 
+        div.mr-1 ID is 
+        div #{giraffeid} 
+    - let actionid = "/resource/giraffe/" + giraffeid 
+    form(id='giraffeForm', action= actionid, method="PUT") 
+        div.form-group 
+            label.giraffeAttr(for='giraffe_name') Giraffe Name 
+            input#giraffe_name(type='text' name='giraffe_name', value= giraffe_name ) 
+        div.form-group 
+            label.giraffeAttr(for='giraffe_color') Giraffe Color 
+            input#giraffe_color(type='text' name='giraffe_color', value= giraffe_color ) 
+        div.form-group 
+            label.giraffeAttr(for='giraffe_weight') Giraffe Weight
+            input#giraffe_weight(type='number' name='giraffe_weight', value= giraffe_weight ) 
+        input(type="submit") 
+
+
+    script. 
+        document.forms['giraffeForm'].addEventListener('submit', (event) => { 
+            event.preventDefault(); 
+            // TODO do something here to show user that form is being submitted 
+            fetch(event.target.action, { 
+                method: 'PUT', 
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+            }).then((resp) => { 
+                return resp.json(); // or resp.text() or whatever the server sends 
+            }).then((body) => { 
+                alert("Update succeded") 
+                // TODO handle body 
+            }).catch((error) => { 
+                // TODO handle error 
+                alert("Update failed " + error ) 
+            }); 
+        });
