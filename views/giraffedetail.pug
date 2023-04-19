@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let giraffeid = toShow._id
+ - let giraffe_name = toShow.giraffe_name
+ - let giraffe_color = toShow.giraffe_color
+ - let giraffe_weight = toShow.giraffe_weight
+ div
+ div.row
+ div(class='giraffeAttr mr-3') Giraffe ID is:
+ div #{giraffeid}
+ div.row
+ div(class='giraffeAttr mr-3') Giraffe Name is:
+ div #{giraffe_name}
+ div.row
+ div(class='giraffeAttr mr-3') Giraffe Color is:
+ div #{giraffe_color}
+ div.row
+ div(class='giraffeAttr mr-3') Giraffe Weight is:
+ div #{giraffe_weight}

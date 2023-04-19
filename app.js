@@ -67,7 +67,7 @@ console.log("Connection to DB succeeded")})
 async function recreateDB(){
   // Delete everything
   await giraffe.deleteMany();
-  let instance1 = new giraffe({giraffe_name:"car", giraffe_color:'light tan',giraffe_weight:3600});
+  let instance1 = new giraffe({giraffe_name:"Western", giraffe_color:'light tan',giraffe_weight:3600});
   instance1.save().then(() => {
     console.log("First object saved");
   })
