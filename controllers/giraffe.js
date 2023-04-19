@@ -114,3 +114,17 @@ exports.giraffe_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+   // Handle building the view for creating a giraffe.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.giraffe_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('giraffecreate', { title: 'Giraffe Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
