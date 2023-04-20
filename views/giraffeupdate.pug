@@ -2,8 +2,9 @@ extends layout
 
 block content 
     h1= title 
-
-
+    if (toShow == null) 
+      h2 No instance to detail 
+    else
     - let giraffeid = toShow._id 
     - let giraffe_name = toShow.giraffe_name 
     - let giraffe_color  = toShow.giraffe_color 

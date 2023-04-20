@@ -6,7 +6,7 @@ block content
   .container-fluid 
     .row 
       each cin in items
-        div(class="col-sm-3" style=`border:solid 2px blue` onclick=`buy(${items.indexOf(cin)})`) 
+        div(class="col-sm-3" style=`background-color:black;color: white;font-family: "Ariel";border: 10px solid pink;border-radius: 14px; padding: 11px; border-inline-style: solid; box-shadow: 7px 7px 7px rgba(1, 1, 1, 1.5)` onclick=`buy(${items.indexOf(cin)})`) 
           p.
            giraffe_name -  #{cin.giraffe_name}
           p.
