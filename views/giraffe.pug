@@ -1,19 +1,16 @@
 extends layout
 
 block content
-  - let items = results
+  - let giraffes  = results
   h1= title
-  .container-fluid 
-    .row 
-      each cin in items
-        div(class="col-sm-3" style=`background-color:black;color: white;font-family: "Ariel";border: 10px solid pink;border-radius: 14px; padding: 11px; border-inline-style: solid; box-shadow: 7px 7px 7px rgba(1, 1, 1, 1.5)` onclick=`buy(${items.indexOf(cin)})`) 
-          p.
-           giraffe_name -  #{cin.giraffe_name}
-          p.
-           giraffe_color -  #{cin.giraffe_color}
-          p.
-           giraffe_weight  -  #{cin.giraffe_weight}
+  div(class="container-fluid")
+  div(class="row m-1")
+    each giraffe in giraffes 
+      - let destination = `dispatch(\"/giraffe/update?id=${giraffe._id}\")`
+      div(class="row-sm-2", class="m-1") giraffe #{giraffe.giraffe_name}(#{giraffe.giraffe_color}) is #{giraffe.giraffe_weight} 
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+
   script.
-    function buy(index){
-      alert("You purchased item "+index)
+    function dispatch(path){
+      window.location.href=path
     }
