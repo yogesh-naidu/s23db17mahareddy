@@ -16,11 +16,11 @@ const secured = (req, res, next) => {
 /* GET giraffe */
 router.get('/', giraffe_controlers.giraffe_view_all_Page);
 /* GET detail giraffe page */
-router.get('/detail', giraffe_controlers.giraffe_view_one_Page);
+router.get('/detail', secured, giraffe_controlers.giraffe_view_one_Page);
 /* GET create giraffe page */
-router.get('/create', giraffe_controlers.giraffe_create_Page);
+router.get('/create', secured, giraffe_controlers.giraffe_create_Page);
 /* GET create update page */
 router.get('/update', secured, giraffe_controlers.giraffe_update_Page);
 /* GET delete giraffe page */
-router.get('/delete', giraffe_controlers.giraffe_delete_Page);
+router.get('/delete', secured, giraffe_controlers.giraffe_delete_Page);
 module.exports = router;
