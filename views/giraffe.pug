@@ -3,12 +3,18 @@ extends layout
 block content
   - let giraffes  = results
   h1= title
+   - let create = `dispatch(\"/giraffe/create\")`
+  button.btn( class="btn-primary", onclick= create) Create New Giraffe
   div(class="container-fluid")
   div(class="row m-1")
     each giraffe in giraffes 
       - let destination = `dispatch(\"/giraffe/update?id=${giraffe._id}\")`
+      - let detail = `dispatch(\"/giraffe/detail/?id=${giraffe._id}")`
+      - let deletegiraffe = `dispatch(\"/giraffe/delete/?id=${giraffe._id}")`
       div(class="row-sm-2", class="m-1") giraffe #{giraffe.giraffe_name}(#{giraffe.giraffe_color}) is #{giraffe.giraffe_weight} 
         button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-info", onclick= detail) Details
+        button.btn( class="btn-dark", onclick= deletegiraffe) Delete
 
   script.
     function dispatch(path){
